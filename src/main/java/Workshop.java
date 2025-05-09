@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 public class Workshop{
     public static void main(String[] args){
     }
@@ -361,18 +362,19 @@ public class Workshop{
             return "-" + Integer.toHexString(-numero).toUpperCase();
         return Integer.toHexString(numero).toUpperCase();
     }
-    // Método para el juego de piedra, papel, tijera, lagarto, Spock
+    // Método para el juego de piedra, papel, tijera
     public String jugarPiedraPapelTijeraLagartoSpock(String usuario){
-        // TODO: Implementar el método para el juego de Piedra, Papel, Tijera, Lagarto, Spock.
-        // Las reglas del juego son:
-        // - Piedra vence a Tijera y Lagarto
-        // - Papel vence a Piedra y Spock
-        // - Tijera vence a Papel y Lagarto
-        // - Lagarto vence a Spock y Papel
-        // - Spock vence a Tijera y Piedra
+        // TODO: Implementar el método para el juego de Piedra, Papel, Tijera.
         // El método debe retornar un mensaje indicando el resultado del juego.
         // Ejemplo: Si la eleccionUsuario es "Piedra", el resultado podría ser "Ganaste" o "Perdiste" dependiendo de la elección de la computadora.
-        return "";
+        String[] opciones = {"piedra", "papel", "tijera"};
+        String user = usuario.toLowerCase();
+        String comp = opciones[new Random().nextInt(3)];
+        if (user.equals(comp)) return "Empate";
+        if ((user.equals("piedra") && comp.equals("tijera")) || (user.equals("tijera") && comp.equals("papel")) ||
+                (user.equals("papel") && comp.equals("piedra")))
+            return "Ganaste";
+        return "Perdiste";
     }
     public String pptls2(String game[]){
         //Retornar player ganador o empate
@@ -391,10 +393,24 @@ public class Workshop{
         //Paper disproves Spock
         //Spock vaporizes Rock
         //Rock crushes Scissors
-        return "";
+        String p1 = game[0];
+        String p2 = game[1];
+        if (p1.equals(p2)){
+            return "Empate";
+        }
+        if ((p1.equals("S") && (p2.equals("P") || p2.equals("L"))) ||
+                        (p1.equals("P") && (p2.equals("R") || p2.equals("V"))) ||
+                        (p1.equals("R") && (p2.equals("L") || p2.equals("S"))) ||
+                        (p1.equals("L") && (p2.equals("V") || p2.equals("P"))) ||
+                        (p1.equals("V") && (p2.equals("S") || p2.equals("R")))){
+            return "Player 1";
+        }
+        else{
+            return "Player 2";
+        }
     }
     public double areaCirculo(double radio){
-        double area = Math.PI * radio * radio;
+        double area =  radio * radio * Math.PI ;
         return area;
     }
     public String zoodiac(int day, int month){
